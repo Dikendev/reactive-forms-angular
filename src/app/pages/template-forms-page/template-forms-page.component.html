@@ -8,7 +8,7 @@
   <pre>{{ userInfo | json }}</pre>
   <p>Form Template Reference Status</p>
   <pre>{{ form.value | json }}</pre>
-  <div>
+  <div class="form-field">
     <label for="first-name">First Name</label>
     <input
       type="text"
@@ -20,17 +20,23 @@
       minlength="2"
       required
     />
-    <div *ngIf="firstName.dirty && firstName.hasError('required')">
+    <div
+      *ngIf="firstName.dirty && firstName.hasError('required')"
+      class="input-error"
+    >
       This field is required!
     </div>
-    <div *ngIf="firstName.dirty && firstName.hasError('minlength')">
+    <div
+      *ngIf="firstName.dirty && firstName.hasError('minlength')"
+      class="input-error"
+    >
       The length should be at least
       <strong> {{ firstName.getError("minlength").requiredLength }} </strong>
       characters
     </div>
   </div>
 
-  <div>
+  <div class="form-field">
     <label for="last-name">Last Name</label>
     <input
       type="text"
@@ -42,17 +48,23 @@
       minlength="2"
       required=""
     />
-    <div *ngIf="lastName.dirty && lastName.hasError('required')">
+    <div
+      *ngIf="lastName.dirty && lastName.hasError('required')"
+      class="input-error"
+    >
       This field is required!
     </div>
-    <div *ngIf="lastName.dirty && lastName.hasError('minlength')">
+    <div
+      *ngIf="lastName.dirty && lastName.hasError('minlength')"
+      class="input-error"
+    >
       The length should be at least
       <strong> {{ lastName.getError("minlength").requiredLength }}</strong>
       characters
     </div>
   </div>
 
-  <div>
+  <div class="form-field">
     <label for="nickname">Nickname</label>
     <input
       type="text"
@@ -65,18 +77,29 @@
       required
       pattern="^[\w.]+$"
     />
-    <div *ngIf="nickname.dirty && nickname.hasError('required')">
+    <div
+      *ngIf="nickname.dirty && nickname.hasError('required')"
+      class="input-error"
+    >
       This field is required
     </div>
-    <div *ngIf="nickname.dirty && nickname.hasError('minlength')">
+    <div
+      *ngIf="nickname.dirty && nickname.hasError('minlength')"
+      class="input-error"
+    >
       The length should be at least
       <strong>{{ nickname.getError("minlength").requiredLength }}</strong>
       characters
     </div>
-    <div *ngIf="nickname.dirty && nickname.hasError('pattern')">
+    <div
+      *ngIf="nickname.dirty && nickname.hasError('pattern')"
+      class="input-error"
+    >
       Only letters, numbers, _ and . are allowed
     </div>
   </div>
+
+  <div></div>
 
   <P>{{ form.status | json }}</P>
 </form>
