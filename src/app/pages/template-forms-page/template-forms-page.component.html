@@ -1,1 +1,32 @@
-<p>template-forms-page works!</p>
+<form
+  #form="ngForm"
+  (reset)="onReset(form, $event)"
+  (ngSubmit)="onSubmit(form, $event)"
+  class="form"
+>
+  <p>Form Model Status</p>
+  <pre>{{ userInfo | json }}</pre>
+  <p>Form Template Reference Status</p>
+  <pre>{{ form.value | json }}</pre>
+  <div>
+    <label for="first-name">First Name</label>
+    <input
+      type="text"
+      id="first-name"
+      name="first-name"
+      placeholder="Enter your name"
+      [(ngModel)]="userInfo.firstName"
+      #firstName="ngModel"
+      minlength="2"
+      required
+    />
+    <div *ngIf="firstName.dirty && firstName.hasError('required')">
+      This field is required!
+    </div>
+    <div *ngIf="firstName.dirty && firstName.hasError('minlength')">
+      The length should be at least
+      <strong> {{ firstName.getError("minlength").requiredLength }} </strong>
+      characters
+    </div>
+  </div>
+</form>
