@@ -51,4 +51,32 @@
       characters
     </div>
   </div>
+
+  <div>
+    <label for="nickname">Nickname</label>
+    <input
+      type="text"
+      id="nickname"
+      name="nickname"
+      placeholder="Come up with a nickname"
+      [(ngModel)]="userInfo.nickname"
+      #nickname="ngModel"
+      minlength="3"
+      required
+      pattern="^[\w.]+$"
+    />
+    <div *ngIf="nickname.dirty && nickname.hasError('required')">
+      This field is required
+    </div>
+    <div *ngIf="nickname.dirty && nickname.hasError('minlength')">
+      The length should be at least
+      <strong>{{ nickname.getError("minlength").requiredLength }}</strong>
+      characters
+    </div>
+    <div *ngIf="nickname.dirty && nickname.hasError('pattern')">
+      Only letters, numbers, _ and . are allowed
+    </div>
+  </div>
+
+  <P>{{ form.status | json }}</P>
 </form>
