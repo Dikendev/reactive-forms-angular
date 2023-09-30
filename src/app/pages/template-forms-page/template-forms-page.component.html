@@ -12,8 +12,8 @@
     <label for="first-name">First Name</label>
     <input
       type="text"
-      id="first-name"
       name="first-name"
+      id="first-name"
       placeholder="Enter your name"
       [(ngModel)]="userInfo.firstName"
       #firstName="ngModel"
@@ -40,8 +40,8 @@
     <label for="last-name">Last Name</label>
     <input
       type="text"
-      id="last-name"
       name="last-name"
+      id="last-name"
       placeholder="Enter your last name"
       [(ngModel)]="userInfo.lastName"
       #lastName="ngModel"
@@ -68,8 +68,8 @@
     <label for="nickname">Nickname</label>
     <input
       type="text"
-      id="nickname"
       name="nickname"
+      id="nickname"
       placeholder="Come up with a nickname"
       [(ngModel)]="userInfo.nickname"
       #nickname="ngModel"
@@ -99,7 +99,81 @@
     </div>
   </div>
 
-  <div></div>
+  <div class="form-field">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Come up with a username"
+      [(ngModel)]="userInfo.username"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      #username="ngModel"
+      minlength="3"
+      required
+      pattern="^[\w.]+$"
+      [appBannedWords]="bannedWords"
+    />
+  </div>
+
+  <div
+    *ngIf="username.dirty && username.hasError('appBannedWords')"
+    class="input-error"
+  >
+    The value
+    <strong>{{ username.getError("appBannedWords").bannedWord }}</strong> is not
+    allowed!
+  </div>
+
+  <div
+    *ngIf="username.dirty && username.hasError('appUniqueUsername')"
+    class="input-error"
+  >
+    This username is taken
+  </div>
+  <!-- <div class="form-field">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      name="username"
+      id="username"
+      placeholder="Come up with a username"
+      [(ngModel)]="userInfo.username"
+      [ngModelOptions]="{ updateOn: 'blur' }"
+      #username="ngModel"
+      minlength="3"
+      required
+      pattern="^[\w.]+$"
+      [appBannedWords]="isAdult ? bannedWords : []"
+      appUniqueUsername
+    />
+
+    <div
+      *ngIf="username.dirty && username.hasError('required')"
+      class="input-error"
+    >
+      This field is required!
+    </div>
+
+    <div *ngIf="username.dirty && username.hasError('minlength')">
+      The length should be at least
+      <strong>{{ username.getError("minlength").requiredLength }}</strong>
+      characters
+    </div>
+
+    <div
+      *ngIf="username.dirty && username.hasError('pattern')"
+      class="input-error"
+    >
+      Only letters, numbers, _ and . is allowed
+    </div>
+
+    
+
+
+
+    <div *ngIf="username.pending" class="input-info">Checking...</div>
+  </div> -->
 
   <P>{{ form.status | json }}</P>
 </form>

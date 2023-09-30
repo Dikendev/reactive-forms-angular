@@ -7,6 +7,8 @@ import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { TemplateFormsPageComponent } from './pages/template-forms-page/template-forms-page.component';
 import { FormsModule } from '@angular/forms';
+import { BannedWordsDirective } from './directives/validators/banned-words.directive';
+import { UniqueUsernameDirective } from './directives/validators/unique-username.directive';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HeaderComponent,
     TemplateFormsPageComponent,
+    BannedWordsDirective,
+    UniqueUsernameDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
