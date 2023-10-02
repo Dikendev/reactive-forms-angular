@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { BannedWordsDirective } from './directives/validators/banned-words.directive';
 import { UniqueUsernameDirective } from './directives/validators/unique-username.directive';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { PasswordShouldMatchDirective } from './directives/validators/password-should-match.directive';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     TemplateFormsPageComponent,
     BannedWordsDirective,
     UniqueUsernameDirective,
+    PasswordShouldMatchDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
