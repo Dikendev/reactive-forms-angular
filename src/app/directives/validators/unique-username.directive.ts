@@ -34,14 +34,14 @@ export class UniqueUsernameDirective implements AsyncValidator {
           : { appUniqueUsername: { isTaken: true } };
       }),
       catchError((error) => {
-        console.error('Validation error:', error);
+        console.error('Validation error: oioioioiioi', error);
         return of({ appUniqueUsername: { unknownError: true } });
       }),
       finalize(() => this.changeDetectorRef.markForCheck())
     );
   }
 
-  registerOnValidatorChange(fn: () => void): void {
-    throw new Error('Method not implemented.');
-  }
+  // registerOnValidatorChange(fn: () => void): void {
+  //   throw new Error('Method not implemented.');
+  // }
 }
