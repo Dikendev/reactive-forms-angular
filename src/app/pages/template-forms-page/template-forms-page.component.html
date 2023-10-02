@@ -112,7 +112,7 @@
       minlength="3"
       required
       pattern="^[\w.]+$"
-      [appBannedWords]="bannedWords"
+      [appBannedWords]="isAdult ? bannedWords : []"
       appUniqueUsername
     />
 
@@ -123,7 +123,6 @@
       This field is required
     </div>
 
-    A
     <div
       *ngIf="username.dirty && username.hasError('minlength')"
       class="input-error"
@@ -177,6 +176,27 @@
 
     <div *ngIf="email.dirty && email.hasError('email')" class="input-error">
       This field should be a valid email!
+    </div>
+  </div>
+
+  <div class="form-field-inline-group">
+    <div class="form-field form-field--small">
+      <label for="year-of-birth">Year of birth</label>
+      <select
+        name="year-of-birth"
+        id="year-of-birth"
+        [(ngModel)]="userInfo.yearOfBirth"
+        #yearOfBirth="ngModel"
+        required
+      >
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+      <div
+        *ngIf="yearOfBirth.dirty && yearOfBirth.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
     </div>
   </div>
 
