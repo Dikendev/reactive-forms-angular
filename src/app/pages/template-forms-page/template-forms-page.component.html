@@ -200,5 +200,32 @@
     </div>
   </div>
 
+  <div class="form-field form-field--small">
+    <label for="passport">Passport Number</label>
+    <input
+      type="text"
+      name="passport"
+      id="passport"
+      [(ngModel)]="userInfo.passport"
+      #password="ngModel"
+      pattern="^[A-Z]{2}[0-9]{6}$"
+      [required]="isAdult"
+      placeholder="Provide Passport Data"
+    />
+
+    <div
+      *ngIf="password.dirty && password.hasError('pattern')"
+      class="input-error"
+    >
+      Invalid passport number
+    </div>
+    <div
+      *ngIf="password.dirty && password.hasError('required')"
+      class="input-error"
+    >
+      Required for adults
+    </div>
+  </div>
+
   <P>{{ form.status | json }}</P>
 </form>
