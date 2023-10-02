@@ -9,8 +9,9 @@ import { TemplateFormsPageComponent } from './pages/template-forms-page/template
 import { FormsModule } from '@angular/forms';
 import { BannedWordsDirective } from './directives/validators/banned-words.directive';
 import { UniqueUsernameDirective } from './directives/validators/unique-username.directive';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { PasswordShouldMatchDirective } from './directives/validators/password-should-match.directive';
+import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page/reactive-forms-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { PasswordShouldMatchDirective } from './directives/validators/password-s
     BannedWordsDirective,
     UniqueUsernameDirective,
     PasswordShouldMatchDirective,
+    ReactiveFormsPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
