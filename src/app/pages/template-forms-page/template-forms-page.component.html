@@ -139,6 +139,24 @@
     >
       Only letters, numbers, _ and . is allowed!
     </div>
+
+    <div
+      *ngIf="username.dirty && username.hasError('appBannedWords')"
+      class="input-error"
+    >
+      The value
+      <strong>{{ username.getError("appBannedWords").bannedWords }}</strong> is
+      not allowed!
+    </div>
+
+    <div
+      *ngIf="username.dirty && username.hasError('appUniqueUsername')"
+      class="input-error"
+    >
+      This username is taken
+    </div>
+    <div *ngIf="username.pending" class="input-info">Checking...</div>
   </div>
+
   <P>{{ form.status | json }}</P>
 </form>
