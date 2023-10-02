@@ -158,5 +158,27 @@
     <div *ngIf="username.pending" class="input-info">Checking...</div>
   </div>
 
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      placeholder="Provide your email"
+      [ngModel]="userInfo.email"
+      #email="ngModel"
+      email
+      required
+    />
+
+    <div *ngIf="email.dirty && email.hasError('required')" class="input-error">
+      This field is required!
+    </div>
+
+    <div *ngIf="email.dirty && email.hasError('email')" class="input-error">
+      This field should be a valid email!
+    </div>
+  </div>
+
   <P>{{ form.status | json }}</P>
 </form>
