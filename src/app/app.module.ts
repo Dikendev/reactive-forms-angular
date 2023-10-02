@@ -9,6 +9,7 @@ import { TemplateFormsPageComponent } from './pages/template-forms-page/template
 import { FormsModule } from '@angular/forms';
 import { BannedWordsDirective } from './directives/validators/banned-words.directive';
 import { UniqueUsernameDirective } from './directives/validators/unique-username.directive';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { UniqueUsernameDirective } from './directives/validators/unique-username
     BannedWordsDirective,
     UniqueUsernameDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
