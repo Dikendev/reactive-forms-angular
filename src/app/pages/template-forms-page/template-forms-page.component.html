@@ -207,20 +207,20 @@
       name="passport"
       id="passport"
       [(ngModel)]="userInfo.passport"
-      #password="ngModel"
+      #passport="ngModel"
       pattern="^[A-Z]{2}[0-9]{6}$"
       [required]="isAdult"
       placeholder="Provide Passport Data"
     />
 
     <div
-      *ngIf="password.dirty && password.hasError('pattern')"
+      *ngIf="passport.dirty && passport.hasError('pattern')"
       class="input-error"
     >
       Invalid passport number
     </div>
     <div
-      *ngIf="password.dirty && password.hasError('required')"
+      *ngIf="passport.dirty && passport.hasError('required')"
       class="input-error"
     >
       Required for adults
