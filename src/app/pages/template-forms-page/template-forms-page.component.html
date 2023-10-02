@@ -227,5 +227,28 @@
     </div>
   </div>
 
+  <fieldset ngModelGroup="address">
+    <legend>Address</legend>
+    <div class="form-field">
+      <label for="full-address">Full Address</label>
+      <input
+        id="full-address"
+        type="text"
+        name="full-address"
+        [(ngModel)]="userInfo.fullAddress"
+        #fullAddress="ngModel"
+        required
+        placeholder="Street name and house number"
+      />
+
+      <div
+        *ngIf="fullAddress.dirty && fullAddress.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
+    </div>
+  </fieldset>
+
   <P>{{ form.status | json }}</P>
 </form>
