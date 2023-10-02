@@ -248,6 +248,26 @@
         This field is required
       </div>
     </div>
+
+    <div class="form-field">
+      <label for="post-code">Post Code</label>
+      <input
+        type="number"
+        name="post-code"
+        id="post-code"
+        [(ngModel)]="userInfo.postCode"
+        #postCode="ngModel"
+        required
+        placeholder="Post code"
+      />
+
+      <div
+        *ngIf="postCode.dirty && postCode.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
+    </div>
   </fieldset>
 
   <P>{{ form.status | json }}</P>
