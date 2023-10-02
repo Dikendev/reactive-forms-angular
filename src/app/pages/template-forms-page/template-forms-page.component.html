@@ -270,5 +270,82 @@
     </div>
   </fieldset>
 
+  <fieldset ngModelGroup="password" appPasswordShouldMatch>
+    <legend>User Password</legend>
+    <div class="form-field">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        [(ngModel)]="userInfo.password"
+        #password="ngModel"
+        required
+        minlength="6"
+        placeholder="Enter user's password"
+      />
+
+      <div
+        *ngIf="password.dirty && password.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
+
+      <div
+        *ngIf="password.dirty && password.hasError('minlength')"
+        class="input-error"
+      >
+        The length should be at least
+        <strong>{{ password.getError("minlength").requiredLength }}</strong>
+        characters
+      </div>
+
+      <div class="form-field">
+        <label for="confirm-password">Confirm password</label>
+        <input
+          id="confirm-password"
+          type="password"
+          name="confirm-password"
+          [(ngModel)]="userInfo.confirmPassword"
+          #confirmPassword="ngModel"
+          required
+          placeholder="Confirm the password"
+        />
+
+        <div
+          *ngIf="confirmPassword.dirty && confirmPassword.hasError('required')"
+          class="input-error"
+        >
+          This field is required
+        </div>
+
+        <div
+          *ngIf="
+            confirmPassword.dirty &&
+            confirmPassword.hasError('appPasswordShouldMatch')
+          "
+          class="input-error"
+        >
+          Password doesn't match
+        </div>
+
+        <div
+          *ngIf="confirmPassword.dirty && confirmPassword.hasError('minlength')"
+          class="input-error"
+        >
+          The length should be at least
+          <strong>{{
+            confirmPassword.getError("minlength").requiredLength
+          }}</strong>
+          characters
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+  <button [disabled]="form.invalid || form.pending" type="submit">Save</button>
+  <button type="reset" class="reset-button">Reset</button>
+
   <P>{{ form.status | json }}</P>
 </form>
