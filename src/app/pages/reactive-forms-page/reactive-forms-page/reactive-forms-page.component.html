@@ -133,4 +133,34 @@
       </div>
     </ng-container>
   </div>
+
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      id="email"
+      placeholder="Provide your email"
+      formControlName="email"
+    />
+
+    <ng-container *ngIf="userForm.controls.email as email">
+      <div
+        *ngIf="email.dirty && email.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
+      <div *ngIf="email.dirty && email.hasError('email')" class="input-error">
+        The email is not valid
+      </div>
+      <div
+        *ngIf="email.dirty && email.hasError('minlength')"
+        class="input-error"
+      >
+        The email must be at least
+        <strong>{{ email.getError("minlength").requiredLength }}</strong>
+        characters
+      </div>
+    </ng-container>
+  </div>
 </form>
