@@ -14,10 +14,7 @@
 
     <ng-container *ngIf="userForm.controls.firstName as firstName">
       <div
-        *ngIf="
-          firstName.touched ||
-          (firstName.dirty && firstName.hasError('required'))
-        "
+        *ngIf="firstName.dirty && firstName.hasError('required')"
         class="input-error"
       >
         This field is required
@@ -52,14 +49,11 @@
 
     <ng-container *ngIf="userForm.controls.lastName as lastName">
       <div
-        *ngIf="
-          lastName.touched || (lastName.dirty && lastName.hasError('required'))
-        "
+        *ngIf="lastName.dirty && lastName.hasError('required')"
         class="input-error"
       >
         This field is required
       </div>
-
       <div
         *ngIf="lastName.dirty && lastName.hasError('minlength')"
         class="input-error"
@@ -67,6 +61,48 @@
         The name must be at least
         <strong>{{ lastName.getError("minlength").requiredLength }}</strong>
         characters
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="form-field">
+    <label for="nickname">Nickname</label>
+    <input
+      type="text"
+      id="nickname"
+      placeholder="Come up with a nickname"
+      formControlName="nickname"
+    />
+
+    <ng-container *ngIf="userForm.controls.nickname as nickname">
+      <div
+        *ngIf="nickname.dirty && nickname.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
+      <div
+        *ngIf="nickname.dirty && nickname.hasError('uniqueName')"
+        class="input-error"
+      >
+        This nickname is already taken
+      </div>
+      <div *ngIf="nickname.pending" class="input-info">
+        Checking nickname...
+      </div>
+      <div
+        *ngIf="nickname.dirty && nickname.hasError('minlength')"
+        class="input-error"
+      >
+        The name must be at least
+        <strong>{{ nickname.getError("minlength").requiredLength }}</strong>
+        characters
+      </div>
+      <div
+        *ngIf="nickname.dirty && nickname.hasError('pattern')"
+        class="input-error"
+      >
+        Only letters, numbers, _ and . is allowed
       </div>
     </ng-container>
   </div>
