@@ -39,7 +39,7 @@ export class ReactiveFormsPageComponent {
         updateOn: 'blur',
       },
     ],
-    username: [''],
+    username: ['', [Validators.required, Validators.minLength(3)]],
     email: [''],
     yearOfBirth: [''],
     passport: [''],

@@ -106,4 +106,31 @@
       </div>
     </ng-container>
   </div>
+
+  <div class="form-field">
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      placeholder="Come up with a username"
+      formControlName="username"
+    />
+
+    <ng-container *ngIf="userForm.controls.username as username">
+      <div
+        *ngIf="username.dirty && username.hasError('required')"
+        class="input-error"
+      >
+        This field is required
+      </div>
+      <div
+        *ngIf="username.dirty && username.hasError('minlength')"
+        class="input-error"
+      >
+        The name must be at least
+        <strong>{{ username.getError("minlength").requiredLength }}</strong>
+        characters
+      </div>
+    </ng-container>
+  </div>
 </form>
