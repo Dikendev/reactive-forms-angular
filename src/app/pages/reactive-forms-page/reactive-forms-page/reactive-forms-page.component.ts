@@ -40,7 +40,10 @@ export class ReactiveFormsPageComponent {
       },
     ],
     username: ['', [Validators.required, Validators.minLength(3)]],
-    email: [''],
+    email: [
+      '',
+      [Validators.required, Validators.email, Validators.minLength(2)],
+    ],
     yearOfBirth: [''],
     passport: [''],
     address: [''],
