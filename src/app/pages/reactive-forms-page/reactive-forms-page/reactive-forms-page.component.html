@@ -1,1 +1,44 @@
-<p>reactive-forms-page works!</p>
+<form [formGroup]="userForm" class="form">
+  <p>Form Reference Status</p>
+  <pre>{{ userForm.status | json }}</pre>
+  <pre>{{ userForm.value | json }}</pre>
+
+  <div class="form-field">
+    <label for="name">First Name</label>
+    <input
+      type="text"
+      id="name"
+      placeholder="Enter your name"
+      formControlName="firstName"
+    />
+
+    <ng-container *ngIf="userForm.controls.firstName as firstName">
+      <div
+        *ngIf="
+          firstName.touched ||
+          (firstName.dirty && firstName.hasError('required'))
+        "
+        class="input-error"
+      >
+        This field is required
+      </div>
+      <div
+        *ngIf="firstName.dirty && firstName.hasError('banWords')"
+        class="input-error"
+      >
+        The value
+        <strong>{{ firstName.getError("banWords").bannedWord }} </strong> is
+        banned
+      </div>
+      <div *ngIf="firstName.dirty && firstName.hasError('minlength')">
+        The name must be at least
+        <strong
+          >{{
+            firstName.getError("minlength").requiredLength
+          }}
+          characters</strong
+        >
+      </div>
+    </ng-container>
+  </div>
+</form>
