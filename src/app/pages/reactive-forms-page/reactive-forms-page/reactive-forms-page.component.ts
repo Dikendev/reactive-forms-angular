@@ -47,7 +47,7 @@ export class ReactiveFormsPageComponent {
     yearOfBirth: this._formBuilder.nonNullable.control(
       this.years[this.years.length - 1]
     ),
-    passport: [''],
+    passport: ['', [Validators.pattern(/^[A-Z]{2}[0-9]{6}$/)]],
     address: [''],
     phones: [''],
     skills: [''],
