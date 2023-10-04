@@ -163,4 +163,14 @@
       </div>
     </ng-container>
   </div>
+
+  <div class="form-field-inline-group">
+    <div class="form-field form-field--small">
+      <label for="year-of-birth">Year of birth</label>
+      <select id="year-of-birth" formControlName="yearOfBirth">
+        <option *ngFor="let year of years">{{ year }}</option>
+      </select>
+    </div>
+    <div></div>
+  </div>
 </form>
