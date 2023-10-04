@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './core/footer/footer.component';
 import { HeaderComponent } from './core/header/header.component';
 import { TemplateFormsPageComponent } from './pages/template-forms-page/template-forms-page.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BannedWordsDirective } from './directives/validators/banned-words.directive';
 import { UniqueUsernameDirective } from './directives/validators/unique-username.directive';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +24,13 @@ import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive
     PasswordShouldMatchDirective,
     ReactiveFormsPageComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
