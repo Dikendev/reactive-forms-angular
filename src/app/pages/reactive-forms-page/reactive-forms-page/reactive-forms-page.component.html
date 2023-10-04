@@ -35,12 +35,38 @@
         class="input-error"
       >
         The name must be at least
-        <strong
-          >{{
-            firstName.getError("minlength").requiredLength
-          }}
-          characters</strong
-        >
+        <strong>{{ firstName.getError("minlength").requiredLength }} </strong
+        >characters
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="form-field">
+    <label for="last-name">Last Name</label>
+    <input
+      type="text"
+      id="last-name"
+      placeholder="Enter your last name"
+      formControlName="lastName"
+    />
+
+    <ng-container *ngIf="userForm.controls.lastName as lastName">
+      <div
+        *ngIf="
+          lastName.touched || (lastName.dirty && lastName.hasError('required'))
+        "
+        class="input-error"
+      >
+        This field is required
+      </div>
+
+      <div
+        *ngIf="lastName.dirty && lastName.hasError('minlength')"
+        class="input-error"
+      >
+        The name must be at least
+        <strong>{{ lastName.getError("minlength").requiredLength }}</strong>
+        characters
       </div>
     </ng-container>
   </div>
