@@ -1,5 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  FormGroupDirective,
+  Validators,
+} from '@angular/forms';
 import { banWords } from 'src/app/validators/ban-words.validators';
 
 @Component({
@@ -11,11 +16,11 @@ export class ReactiveFormsPageComponent {
   @ViewChild(FormGroupDirective)
   public formDir!: FormGroupDirective;
 
-  public useForm = this._formBuilder.group({
-    firstName: [''],
+  public userForm = this._formBuilder.group({
+    firstName: ['', [Validators.required]],
     lastName: [''],
     nickName: [''],
-    username: [],
+    username: [''],
     email: [''],
     yearOfBirth: [''],
     passport: [''],
