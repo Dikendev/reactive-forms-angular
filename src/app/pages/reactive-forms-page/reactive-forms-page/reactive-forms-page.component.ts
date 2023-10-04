@@ -44,7 +44,9 @@ export class ReactiveFormsPageComponent {
       '',
       [Validators.required, Validators.email, Validators.minLength(2)],
     ],
-    yearOfBirth: [''],
+    yearOfBirth: this._formBuilder.nonNullable.control(
+      this.years[this.years.length - 1]
+    ),
     passport: [''],
     address: [''],
     phones: [''],
@@ -56,4 +58,11 @@ export class ReactiveFormsPageComponent {
     private _formBuilder: FormBuilder,
     private _uniqueNicknameValidator: UniqueNicknameValidator
   ) {}
+
+  get years() {
+    const now = new Date().getUTCFullYear();
+    return Array(now - 1949)
+      .fill('')
+      .map((_, index) => now - index);
+  }
 }
