@@ -171,6 +171,31 @@
         <option *ngFor="let year of years">{{ year }}</option>
       </select>
     </div>
-    <div></div>
+
+    <div class="form-field form-field--small">
+      <label for="passport">Passport Number</label>
+      <input
+        type="text"
+        id="passport"
+        placeholder="Provide Passport Data"
+        formControlName="passport"
+      />
+
+      <ng-container *ngIf="userForm.controls.passport as passport">
+        <div
+          *ngIf="passport.dirty && passport.hasError('required')"
+          class="input-error"
+        >
+          This field is required
+        </div>
+
+        <div
+          *ngIf="passport.dirty && passport.hasError('pattern')"
+          class="input-error"
+        >
+          Allowed format is: AB123456
+        </div>
+      </ng-container>
+    </div>
   </div>
 </form>
