@@ -27,10 +27,13 @@
         class="input-error"
       >
         The value
-        <strong>{{ firstName.getError("banWords").bannedWord }} </strong> is
+        <strong>{{ firstName.getError("banWords").bannedWords }} </strong> is
         banned
       </div>
-      <div *ngIf="firstName.dirty && firstName.hasError('minlength')">
+      <div
+        *ngIf="firstName.dirty && firstName.hasError('minlength')"
+        class="input-error"
+      >
         The name must be at least
         <strong
           >{{
