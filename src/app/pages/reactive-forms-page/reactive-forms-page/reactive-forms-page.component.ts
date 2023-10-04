@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
 import { banWords } from 'src/app/validators/ban-words.validators';
+import { UniqueNicknameValidator } from 'src/app/validators/unique-nickname.validator';
 
 @Component({
   selector: 'app-reactive-forms-page',
@@ -22,7 +23,22 @@ export class ReactiveFormsPageComponent {
       ,
     ],
     lastName: ['', [Validators.required, Validators.minLength(2)]],
-    nickName: [''],
+    nickname: [
+      '',
+      {
+        validators: [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.pattern(/^[\w.]+$/),
+        ],
+        asyncValidator: [
+          this._uniqueNicknameValidator.validate.bind(
+            this._uniqueNicknameValidator
+          ),
+        ],
+        updateOn: 'blur',
+      },
+    ],
     username: [''],
     email: [''],
     yearOfBirth: [''],
@@ -33,5 +49,8 @@ export class ReactiveFormsPageComponent {
     password: [''],
   });
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _uniqueNicknameValidator: UniqueNicknameValidator
+  ) {}
 }
