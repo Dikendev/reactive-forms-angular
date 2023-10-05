@@ -1,0 +1,25 @@
+<form [formGroup]="paramInputs" class="form" (submit)="onSubmit()">
+  <p>Form Reference Status</p>
+  <pre>{{ paramInputs.status | json }}</pre>
+  <pre>{{ paramInputs.value | json }}</pre>
+
+  <div class="form-field">
+    <label for="factory">Factory Select</label>
+    <select formControlName="factory">
+      <option *ngFor="let factory of getFactory()" [value]="factory">
+        {{ factory }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-field">
+    <label for="panel">Panel Select</label>
+    <select formControlName="panel" (change)="updateFactoryForPanel()">
+      <option *ngFor="let panel of getPanels()" [value]="panel">
+        {{ panel }}
+      </option>
+    </select>
+  </div>
+
+  <button type="submit">oi</button>
+</form>

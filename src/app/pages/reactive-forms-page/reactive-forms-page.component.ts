@@ -1,4 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -6,6 +12,15 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
+import {
+  Observable,
+  Subscription,
+  bufferCount,
+  filter,
+  startWith,
+  tap,
+} from 'rxjs';
+import { UserSkillsService } from 'src/app/services/user-skills.service';
 import { banWords } from 'src/app/validators/ban-words.validators';
 import { UniqueNicknameValidator } from 'src/app/validators/unique-nickname.validator';
 
@@ -14,8 +29,15 @@ import { UniqueNicknameValidator } from 'src/app/validators/unique-nickname.vali
   templateUrl: './reactive-forms-page.component.html',
   styleUrls: ['./reactive-forms-page.component.scss'],
 })
-export class ReactiveFormsPageComponent {
+export class ReactiveFormsPageComponent implements OnInit, OnDestroy {
+  [x: string]: any;
   public phoneLabels = ['Main', 'Mobile', 'Work', 'Home'];
+
+  //
+  public skills$!: Observable<string[]>;
+  private initialFormValues: any;
+  private ageValidators!: Subscription;
+  private formPendingState!: Subscription;
 
   @ViewChild(FormGroupDirective)
   public formDir!: FormGroupDirective;
@@ -67,14 +89,44 @@ export class ReactiveFormsPageComponent {
         phone: '',
       }),
     ]),
-    skills: [''],
+    skills: this._formBuilder.record<FormControl<boolean>>({}),
     password: [''],
   });
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _uniqueNicknameValidator: UniqueNicknameValidator
+    private _uniqueNicknameValidator: UniqueNicknameValidator,
+    private _userSkills: UserSkillsService,
+    private _changeDetectorRef: ChangeDetectorRef
   ) {}
+
+  ngOnInit(): void {
+    this.skills$ = this._userSkills.getSkills().pipe(
+      tap((skills) => this.buildSkillControls(skills)),
+      tap(() => (this.initialFormValues = this.userForm.value))
+    );
+
+    this.ageValidators = this.userForm.controls.yearOfBirth.valueChanges
+      .pipe(
+        tap(() => this.userForm.controls.passport.markAsDirty()),
+        startWith(this.userForm.controls.yearOfBirth.value)
+      )
+      .subscribe((yearOfBirth) => {
+        this.isAdult(yearOfBirth)
+          ? this.userForm.controls.passport.addValidators(Validators.required)
+          : this.userForm.controls.passport.removeValidators(
+              Validators.required
+            );
+        this.userForm.controls.passport.updateValueAndValidity();
+      });
+
+    this.formPendingState = this.userForm.statusChanges
+      .pipe(
+        bufferCount(2, 1),
+        filter(([prevState]) => prevState === 'PENDING')
+      )
+      .subscribe(() => this._changeDetectorRef.markForCheck());
+  }
 
   get years() {
     const now = new Date().getUTCFullYear();
@@ -99,5 +151,24 @@ export class ReactiveFormsPageComponent {
   public onRemovePhone(index: number) {
     console.log('remove phone button clicked!!!');
     this.userForm.controls.phones.removeAt(index);
+  }
+
+  private buildSkillControls(skills: string[]) {
+    skills.forEach((skill) =>
+      this.userForm.controls.skills.addControl(
+        skill,
+        new FormControl(false, { nonNullable: true })
+      )
+    );
+  }
+
+  private isAdult(yearOfBirth: number): boolean {
+    const currentYear = new Date().getFullYear();
+    return currentYear - yearOfBirth >= 18;
+  }
+
+  ngOnDestroy(): void {
+    this.ageValidators.unsubscribe();
+    this.formPendingState.unsubscribe();
   }
 }

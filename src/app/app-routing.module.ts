@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TemplateFormsPageComponent } from './pages/template-forms-page/template-forms-page.component';
-import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page/reactive-forms-page.component';
+import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page.component';
+import { FormListComponent } from './pages/reactive-forms-page/form-list/form-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'template', pathMatch: 'full' },
@@ -14,6 +15,11 @@ const routes: Routes = [
     path: 'reactive-forms',
     title: 'Reactive Forms Playground',
     component: ReactiveFormsPageComponent,
+  },
+  {
+    path: 'reactive-list',
+    title: 'Reactive List Playground',
+    component: FormListComponent,
   },
 ];
 
