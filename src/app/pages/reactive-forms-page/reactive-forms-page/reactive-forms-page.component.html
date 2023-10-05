@@ -209,12 +209,24 @@
         placeholder="Street name and house number"
         formControlName="fullAddress"
       />
-
       <ng-container
         *ngIf="userForm.controls.address.controls.fullAddress as fullAddress"
       >
         <div
           *ngIf="fullAddress.dirty && fullAddress.hasError('required')"
+          class="input-error"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="form-field">
+      <label for="city">City</label>
+      <input type="text" id="city" placeholder="City" formControlName="city" />
+      <ng-container *ngIf="userForm.controls.address.controls.city as city">
+        <div
+          *ngIf="city.dirty && city.hasError('required')"
           class="input-error"
         >
           This field is required
