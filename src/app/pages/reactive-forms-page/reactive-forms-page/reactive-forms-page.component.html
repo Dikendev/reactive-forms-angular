@@ -233,5 +233,25 @@
         </div>
       </ng-container>
     </div>
+
+    <div class="form-field">
+      <label for="post-code">Post Code</label>
+      <input
+        type="text"
+        id="post-code"
+        placeholder="Post Code"
+        formControlName="postCode"
+      />
+      <ng-container
+        *ngIf="userForm.controls.address.controls.postCode as postCode"
+      >
+        <div
+          *ngIf="postCode.dirty && postCode.hasError('required')"
+          class="input-error"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
   </fieldset>
 </form>
