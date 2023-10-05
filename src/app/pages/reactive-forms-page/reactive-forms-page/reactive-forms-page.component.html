@@ -254,4 +254,35 @@
       </ng-container>
     </div>
   </fieldset>
+
+  <fieldset formArrayName="phones">
+    <legend>Phones</legend>
+    <div class="control-buttons">
+      <button (click)="onAddPhone()" class="add-button" type="button">+</button>
+    </div>
+
+    <div
+      class="form-field"
+      *ngFor="let phone of userForm.controls.phones.controls; index as i"
+      [formGroupName]="i"
+    >
+      <label for="phone-{{ i }}">Phone number</label>
+      <div class="control-container">
+        <select class="phone-label-dropdown" formControlName="label">
+          <option *ngFor="let label of phoneLabels" [value]="label">
+            {{ label }}
+          </option>
+        </select>
+        <input
+          type="text"
+          id="phone-{{ i }}"
+          placeholder="Enter Phone Number"
+          formControlName="phone"
+        />
+        <button class="remove-button" (click)="onRemovePhone(i)" type="button">
+          -
+        </button>
+      </div>
+    </div>
+  </fieldset>
 </form>

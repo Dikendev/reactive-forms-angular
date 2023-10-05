@@ -1,5 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroupDirective, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  Validators,
+} from '@angular/forms';
 import { banWords } from 'src/app/validators/ban-words.validators';
 import { UniqueNicknameValidator } from 'src/app/validators/unique-nickname.validator';
 
@@ -9,6 +15,8 @@ import { UniqueNicknameValidator } from 'src/app/validators/unique-nickname.vali
   styleUrls: ['./reactive-forms-page.component.scss'],
 })
 export class ReactiveFormsPageComponent {
+  public phoneLabels = ['Main', 'Mobile', 'Work', 'Home'];
+
   @ViewChild(FormGroupDirective)
   public formDir!: FormGroupDirective;
 
@@ -53,7 +61,12 @@ export class ReactiveFormsPageComponent {
       city: ['', Validators.required],
       postCode: ['', Validators.required],
     }),
-    phones: [''],
+    phones: this._formBuilder.array([
+      this._formBuilder.group({
+        label: this._formBuilder.nonNullable.control(this.phoneLabels[0]),
+        phone: '',
+      }),
+    ]),
     skills: [''],
     password: [''],
   });
@@ -68,5 +81,23 @@ export class ReactiveFormsPageComponent {
     return Array(now - 1949)
       .fill('')
       .map((_, index) => now - index);
+  }
+
+  //para adicionar mais telefones
+  public onAddPhone() {
+    console.log('add phone button clicked!!!');
+    this.userForm.controls.phones.insert(
+      0,
+      new FormGroup({
+        label: new FormControl(this.phoneLabels[0], { nonNullable: true }),
+        phone: new FormControl(''),
+      })
+    );
+  }
+
+  //nome ja diz tudo 😜
+  public onRemovePhone(index: number) {
+    console.log('remove phone button clicked!!!');
+    this.userForm.controls.phones.removeAt(index);
   }
 }
