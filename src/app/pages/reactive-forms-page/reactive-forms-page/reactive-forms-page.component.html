@@ -198,4 +198,28 @@
       </ng-container>
     </div>
   </div>
+
+  <fieldset formGroupName="address">
+    <legend>Address</legend>
+    <div class="form-field">
+      <label for="full-address">Full Address</label>
+      <input
+        type="text"
+        id="full-address"
+        placeholder="Street name and house number"
+        formControlName="fullAddress"
+      />
+
+      <ng-container
+        *ngIf="userForm.controls.address.controls.fullAddress as fullAddress"
+      >
+        <div
+          *ngIf="fullAddress.dirty && fullAddress.hasError('required')"
+          class="input-error"
+        >
+          This field is required
+        </div>
+      </ng-container>
+    </div>
+  </fieldset>
 </form>
