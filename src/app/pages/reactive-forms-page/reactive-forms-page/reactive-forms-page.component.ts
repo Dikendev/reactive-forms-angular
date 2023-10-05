@@ -48,7 +48,11 @@ export class ReactiveFormsPageComponent {
       this.years[this.years.length - 1]
     ),
     passport: ['', [Validators.pattern(/^[A-Z]{2}[0-9]{6}$/)]],
-    address: [''],
+    address: this._formBuilder.group({
+      fullAddress: ['', Validators.required],
+      city: ['', Validators.required],
+      postCode: ['', Validators.required],
+    }),
     phones: [''],
     skills: [''],
     password: [''],
