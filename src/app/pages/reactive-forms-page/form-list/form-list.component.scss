@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+
+  .child {
+    height: 23rem;
+    width: 25rem;
+    outline: none;
+    border-style: solid;
+  }
+
+}
