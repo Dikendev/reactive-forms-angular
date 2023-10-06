@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PasswordShouldMatchDirective } from './directives/validators/password-should-match.directive';
 import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page.component';
 import { FormListComponent } from './pages/reactive-forms-page/form-list/form-list.component';
+import { ViewPageComponent } from './view-page/view-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { FormListComponent } from './pages/reactive-forms-page/form-list/form-li
     PasswordShouldMatchDirective,
     ReactiveFormsPageComponent,
     FormListComponent,
+    ViewPageComponent,
   ],
   imports: [
     BrowserModule,
