@@ -1,0 +1,11 @@
+<p>view-page works!</p>
+
+<div *ngIf="data">
+  <div *ngFor="let dat of data">
+    <h1>Name:{{ dat.name }}</h1>
+    <ul>
+      <li *ngFor="let panel of dat.panels">id:{{ panel.name }}</li>
+    </ul>
+  </div>
+</div>
+<div #elseDiv><h1>Teste de quando nao tem nada ainda</h1></div>
