@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-form-list',
@@ -7,7 +8,8 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./form-list.component.scss'],
 })
 export class FormListComponent implements OnInit {
-  factories: any = [
+  paramInputs!: FormGroup;
+  public factories: any = [
     {
       id: 2,
       name: 'Fábrica I',
@@ -35,11 +37,9 @@ export class FormListComponent implements OnInit {
     },
   ];
 
-  public paramInputs = this._formBuilder.group({
-    factory: [''],
-    panel: [''],
-    productionOrder: [''],
-  });
+  public dataViewRender(): any {
+    return this.factories;
+  }
 
   getFactory() {
     return this.factories.map((f: any) => f.name);
@@ -102,12 +102,26 @@ export class FormListComponent implements OnInit {
       }
     }
 
+    this.apiService.fetchData(this.paramInputs.value).subscribe((response) => {
+      if (response.status === 'success') {
+        this.factories = response.data;
+      }
+    });
     // Now, formData object contains IDs instead of names for factory and panel
     console.log(formData);
 
     // You can send the formData to your backend or perform other actions here
   }
 
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(
+    private _formBuilder: FormBuilder,
+    private apiService: UserService
+  ) {
+    this.paramInputs = this._formBuilder.group({
+      factory: [''],
+      panel: [''],
+      productionOrder: [''],
+    });
+  }
   ngOnInit(): void {}
 }
