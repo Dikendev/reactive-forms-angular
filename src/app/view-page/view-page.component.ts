@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-view-page',
@@ -6,5 +8,16 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./view-page.component.scss'],
 })
 export class ViewPageComponent {
-  @Input() data: any = '';
+  @Input() data: any;
+
+  constructor(private sharedService: SharedService, private router: Router) {}
+
+  clickItem(item: any) {
+    console.log('pegar cada item pelo id', item);
+  }
+
+  selectItem(item: any) {
+    console.log('selectItem oiiiiiii');
+    this.sharedService.selectItem(item);
+  }
 }
