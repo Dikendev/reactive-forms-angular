@@ -37,9 +37,7 @@ export class FormListComponent implements OnInit {
     },
   ];
 
-  public dataViewRender(): any {
-    return this.factories;
-  }
+  requestInputsResponse: any;
 
   getFactory() {
     return this.factories.map((f: any) => f.name);
@@ -104,12 +102,11 @@ export class FormListComponent implements OnInit {
 
     this.apiService.fetchData(this.paramInputs.value).subscribe((response) => {
       if (response.status === 'success') {
-        this.factories = response.data;
+        this.requestInputsResponse = response.data;
+        console.log('dentro', response.data);
       }
     });
     // Now, formData object contains IDs instead of names for factory and panel
-    console.log(formData);
-
     // You can send the formData to your backend or perform other actions here
   }
 
