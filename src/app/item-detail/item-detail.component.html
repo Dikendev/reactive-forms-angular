@@ -1,0 +1,15 @@
+<form [formGroup]="paramInputs">
+  <p>Form Reference Status</p>
+  <pre>{{ paramInputs.status | json }}</pre>
+  <pre>{{ paramInputs.value | json }}</pre>
+</form>
+
+<div>Voce ira enviar para o numero de serie {{ selectedItem.id }}</div>
+<div *ngIf="selectedItem"><pre>SO vai aparecer se selecionar um item</pre></div>
+<!-- <div *ngIf="selectedItem">
+  <pre>Panel ID : {{ selectedItem.id }} </pre>
+
+
+</div>
+
+ -->
