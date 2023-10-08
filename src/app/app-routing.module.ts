@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TemplateFormsPageComponent } from './pages/template-forms-page/template-forms-page.component';
 import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page.component';
 import { FormListComponent } from './pages/reactive-forms-page/form-list/form-list.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'template', pathMatch: 'full' },
@@ -20,6 +21,11 @@ const routes: Routes = [
     path: 'reactive-list',
     title: 'Reactive List Playground',
     component: FormListComponent,
+  },
+  {
+    path: 'item-detail',
+    title: 'item detail',
+    component: ItemDetailComponent,
   },
 ];
 
