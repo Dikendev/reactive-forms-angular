@@ -1,11 +1,46 @@
-<p>view-page works!</p>
-
-<div *ngIf="data">
-  <div *ngFor="let dat of data">
-    <h1>Name:{{ dat.name }}</h1>
+<div *ngIf="data && data.productionOrder; else factoryPanelTemplate">
+  <div *ngFor="let dat of data; let i = index">
+    <h1>Name:{{ dat.name }} -- index: {{ i }}</h1>
     <ul>
-      <li *ngFor="let panel of dat.panels">id:{{ panel.name }}</li>
+      <li
+        *ngFor="let panel of dat.panels; let i = index"
+        (click)="selectItem(panel)"
+      >
+        <p>name: {{ panel.name }} -- index : {{ i }}</p>
+      </li>
     </ul>
   </div>
 </div>
-<div #elseDiv><h1>Teste de quando nao tem nada ainda</h1></div>
+
+<ng-template #factoryPanelTemplate>
+  <div *ngIf="data">
+    <h1>Factory Name: {{ data.name }}</h1>
+
+    <!-- Template for data with only factory and panel -->
+    <ul>
+      <li *ngFor="let panel of data.panels">
+        <p>Panel ID: {{ panel.id }}, Name: {{ panel.name }}</p>
+      </li>
+    </ul>
+  </div>
+</ng-template>
+
+<div *ngIf="!data"><h1>Teste de quando nao tem nada ainda</h1></div>
+
+<app-item-detail></app-item-detail>
+<!-- 
+
+<div *ngIf="data">
+  <div *ngFor="let dat of data; let i = index">
+    <h1>Name:{{ dat.name }} -- index: {{ i }}</h1>
+    <ul>
+      <li
+        *ngFor="let panel of dat.panels; let i = index"
+        (click)="clickItem(i)"
+      >
+        <p>name: {{ panel.name }} -- index : {{ i }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
+<div #elseDiv><h1>Teste de quando nao tem nada ainda</h1></div> -->
