@@ -14,6 +14,7 @@ import { PasswordShouldMatchDirective } from './directives/validators/password-s
 import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page.component';
 import { FormListComponent } from './pages/reactive-forms-page/form-list/form-list.component';
 import { ViewPageComponent } from './view-page/view-page.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ViewPageComponent } from './view-page/view-page.component';
     ReactiveFormsPageComponent,
     FormListComponent,
     ViewPageComponent,
+    ItemDetailComponent,
   ],
   imports: [
     BrowserModule,
