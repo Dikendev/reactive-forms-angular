@@ -43,10 +43,20 @@ export class UserService {
     },
   ];
 
+  factoryAndPanelUniq: any = {
+    id: 6,
+    name: 'Fábrica II',
+    panels: [
+      { id: 23232, name: 'M23232' },
+      { id: 12323, name: 'M12323' },
+      { id: 123, name: 'M123' },
+    ],
+  };
+
   fetchData(formData: any): Observable<any> {
     return of({
       status: 'success',
-      data: this.factories,
-    }).pipe(delay(2000));
+      data: this.factoryAndPanelUniq,
+    }).pipe(delay(1000));
   }
 }
