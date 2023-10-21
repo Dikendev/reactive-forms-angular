@@ -15,6 +15,8 @@ import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive
 import { FormListComponent } from './pages/reactive-forms-page/form-list/form-list.component';
 import { ViewPageComponent } from './view-page/view-page.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { LoginComponent } from './login/login.component';
+import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     FormListComponent,
     ViewPageComponent,
     ItemDetailComponent,
+    LoginComponent,
+    RxjsBasicsPageComponent,
   ],
   imports: [
     BrowserModule,
