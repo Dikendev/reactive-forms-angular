@@ -4,6 +4,8 @@ import { TemplateFormsPageComponent } from './pages/template-forms-page/template
 import { ReactiveFormsPageComponent } from './pages/reactive-forms-page/reactive-forms-page.component';
 import { FormListComponent } from './pages/reactive-forms-page/form-list/form-list.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { LoginComponent } from './login/login.component';
+import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'template', pathMatch: 'full' },
@@ -26,6 +28,16 @@ const routes: Routes = [
     path: 'item-detail',
     title: 'item detail',
     component: ItemDetailComponent,
+  },
+  {
+    path: 'login',
+    title: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'rxjs-basics',
+    title: 'rxjs',
+    component: RxjsBasicsPageComponent,
   },
 ];
 
