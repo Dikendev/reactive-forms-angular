@@ -23,6 +23,7 @@
     "@reactivex/rxjs": "^6.6.7",
     "carbon-components": "^10.58.10",
     "carbon-components-angular": "^5.14.10",
+    "ngx-markdown": "^16.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

@@ -17,6 +17,8 @@ import { ViewPageComponent } from './view-page/view-page.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-page.component';
+import { DocComponent } from './pages/doc/doc.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-pa
     ItemDetailComponent,
     LoginComponent,
     RxjsBasicsPageComponent,
+    DocComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-pa
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

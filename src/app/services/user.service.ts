@@ -15,7 +15,7 @@ export class UserService {
     );
   }
 
-  factories: any = [
+  productionOrderData: any = [
     {
       id: 2,
       name: 'Fábrica I',
@@ -43,7 +43,7 @@ export class UserService {
     },
   ];
 
-  factoryAndPanelUniq: any = {
+  factoryData: any = {
     id: 6,
     name: 'Fábrica II',
     panels: [
@@ -53,10 +53,16 @@ export class UserService {
     ],
   };
 
+  factoryAndPanelData: any = {
+    id: 6,
+    name: 'Fábrica II',
+    panels: [{ id: 23232, name: 'M23232' }],
+  };
+
   fetchData(formData: any): Observable<any> {
     return of({
       status: 'success',
-      data: this.factoryAndPanelUniq,
+      data: this.factoryData,
     }).pipe(delay(1000));
   }
 }

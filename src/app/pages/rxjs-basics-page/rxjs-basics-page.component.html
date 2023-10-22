@@ -1,1 +1,60 @@
 <p>rxjs-basics-page works!</p>
+
+<div class="image">
+  />
+
+  <div class="teste" (mouseenter)="showDescription()"></div>
+
+  <div class="hide"></div>
+
+  <div class="teste2" (mouseenter)="showDescription2()"></div>
+</div>
+
+<div class="container">
+  <!-- <div class="descricao" [ngClass]="{ visible: isDescriptionVisible }">
+    <h1>Descriçao</h1>
+  </div> -->
+
+  <div *ngIf="isDescriptionVisible" class="descricao visible">
+    <h1>
+      Wernher Magnus Maximilian von Braun (Wirsitz, 23 de março de 1912 —
+      Alexandria, 16 de junho de 1977) foi um engenheiro alemão e uma das
+      principais figuras no desenvolvimento do foguete V-2 na Alemanha Nazista e
+      do foguete Saturno V nos Estados Unidos. Ele foi uma das principais
+      figuras no desenvolvimento de tecnologias de foguetes para a Alemanha,
+      embora alegasse que seu envolvimento com o Partido Nazista fosse apenas
+      visando não interromper suas pesquisas e proteger-se de caçadas
+      anticomunistas.[3]
+    </h1>
+  </div>
+
+  <div
+    *ngIf="isDescriptionVisible2"
+    class="descricao"
+    [ngClass]="{ visible: isDescriptionVisible2 }"
+  >
+    <h1>
+      Wernher von Braun nasceu em Wirsitz, na província de Posen, hoje chamada
+      Wyrzysk na Polónia e à época parte da Prússia e do Império Alemão. Era o
+      segundo de três irmãos. Ele pertencia a uma família de aristocratas, que
+      herdaram o título de Freiherr (equivalente ao título de barão).
+    </h1>
+  </div>
+
+  <!-- <div class="descricao2" [ngClass]="{ visible: isDescriptionVisible2 }">
+    <h1>Descriçao2</h1>
+  </div> -->
+</div>
+
+<svg
+  width="200"
+  height="200"
+  xmlns="http://www.w3.org/2000/svg"
+  class="filter2"
+>
+  <image
+    href="../../../assets/1697820405old-man-8c.svg"
+    height="200"
+    width="200"
+  />
+</svg>

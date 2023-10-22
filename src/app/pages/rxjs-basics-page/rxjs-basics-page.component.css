@@ -1,0 +1,70 @@
+.image {
+  width: 800px;
+  height: 500px;
+  background-color: black;
+  position: relative;
+  transition: opacity 1s; /* add transition for opacity */
+  background-image: image-set(
+    "../../../assets/fundadores-6-2bf111908219bc99b34346be17a40fffc5215decda1f73aa8724875bc393bc43.webp"
+  );
+}
+
+.teste {
+  opacity: 0;
+  width: 300px;
+  height: 100%;
+  background-color: rgba(0, 0, 255, 0.973);
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.teste:hover + .imagerender,
+.teste:hover ~ .descricao {
+  /* adjusted this line */
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.descricao {
+  opacity: 0;
+  transition: opacity 1s;
+  /* other styles */
+}
+
+.teste2 {
+  opacity: 0;
+  width: 200px;
+  height: 100%;
+  background-color: rgb(8, 8, 50);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.teste2:hover + .imagerender2,
+.teste2:hover ~ .descricao2 {
+  /* adjusted this line */
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.descricao2 {
+  opacity: 0;
+  transition: opacity 1s;
+  /* other styles */
+}
+
+.visible {
+  opacity: 1;
+}
+
+.imagee {
+  background-color: black;
+  border: 10px solid red;
+}
+.filter2 > .imagee {
+  filter: blur(200%);
+}
