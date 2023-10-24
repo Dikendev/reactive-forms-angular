@@ -19,6 +19,9 @@ import { LoginComponent } from './login/login.component';
 import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-page.component';
 import { DocComponent } from './pages/doc/doc.component';
 import { MarkdownModule } from 'ngx-markdown';
+import { HomeComponent } from './pages/home/home.component';
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './counter.reducer';
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import { MarkdownModule } from 'ngx-markdown';
     LoginComponent,
     RxjsBasicsPageComponent,
     DocComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +47,7 @@ import { MarkdownModule } from 'ngx-markdown';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({ count: counterReducer }),
     MarkdownModule.forRoot(),
   ],
   providers: [],

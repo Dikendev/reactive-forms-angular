@@ -7,6 +7,7 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RxjsBasicsPageComponent } from './pages/rxjs-basics-page/rxjs-basics-page.component';
 import { DocComponent } from './pages/doc/doc.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const routerOptions: ExtraOptions = {
   anchorScrolling: 'enabled',
@@ -15,6 +16,12 @@ const routerOptions: ExtraOptions = {
 const routes: Routes = [
   {
     path: '',
+    title: 'Home',
+    component: HomeComponent,
+  },
+
+  {
+    path: 'template-forms',
     title: 'Template-Driven Forms Playground',
     component: TemplateFormsPageComponent,
   },
