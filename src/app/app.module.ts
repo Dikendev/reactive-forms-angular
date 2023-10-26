@@ -28,6 +28,7 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DetailsComponent } from './pages/details/details.component';
+import { VersionDocComponent } from './pages/doc/version-doc/version-doc.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -93,6 +94,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     DocComponent,
     HomeComponent,
     DetailsComponent,
+    VersionDocComponent,
   ],
   imports: [
     BrowserModule,

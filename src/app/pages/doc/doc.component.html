@@ -1,20 +1,25 @@
 <div class="container">
-  <ng-container *ngFor="let section of sections">
-    {{ section.name }}
-    <div>
-      <ng-container *ngFor="let child of section.children">
-        <a
-          [href]="'/doc-page#' + child.anchor"
-          (click)="navigateToAnchor(child.anchor)"
-          >{{ child.name }}</a
-        >
-      </ng-container>
-    </div>
-  </ng-container>
+  <div>
+    <ng-container class="menu-list" *ngFor="let section of sections">
+      {{ section.name }}
+      <div>
+        <ng-container *ngFor="let child of section.children">
+          <a
+            [href]="'/doc-page#' + child.anchor"
+            (click)="navigateToAnchor(child.anchor)"
+            >{{ child.name }}</a
+          >
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
 
-  <ng-container *ngFor="let section of docContent">
-    <h1 id="{{ section.anchor }}">{{ section.title }}</h1>
-    <h2>{{ section.SubHeader }}</h2>
-    <p>{{ section.content }}</p>
-  </ng-container>
+  <app-version-doc></app-version-doc>
+  <div class="section">
+    <ng-container *ngFor="let section of docContent">
+      <h1 id="{{ section.anchor }}">{{ section.title }}</h1>
+      <h3>{{ section.SubHeader }}</h3>
+      <div [innerHTML]="section.content"></div>
+    </ng-container>
+  </div>
 </div>
